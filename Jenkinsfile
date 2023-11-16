@@ -2,21 +2,32 @@ pipeline {
     agent any
 
     environment {
+        // Define the JDK tool name configured in Jenkins
         JDK_VERSION = 'JDK 17'
-        gradle 'Gradle 8.4'
+        // Define the Gradle tool name configured in Jenkins
+        GRADLE_VERSION = 'Gradle 8.4'
     }
 
     stages {
         stage('Build'){
             steps {
+                // Install and configure the JDK using the 'tools' step
                 script {
-                    // Install and configure the JDK using the 'tools' step
                     def jdkInstallation = tool name: "${env.JDK_VERSION}", type: 'jdk'
                     env.JAVA_HOME = "${jdkInstallation}"
                     env.PATH = "${jdkInstallation}/bin:${env.PATH}"
-                    sh 'java -version'
-                    sh 'javac -version'
                 }
+
+                // Install and configure Gradle using the 'tools' step
+                script {
+                    def gradleInstallation = tool name: "${env.GRADLE_VERSION}", type: 'gradle'
+                    env.PATH = "${gradleInstallation}/bin:${env.PATH}"
+                }
+
+                // Verify JDK and Gradle installations
+                sh 'java -version'
+                sh 'gradle -v'
+                
                 echo 'Building Commission Project'
                 sh './gradlew build'
             }
