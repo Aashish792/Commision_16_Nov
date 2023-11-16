@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestCommission" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-11-14T17:56:53" hostname="Mds-MacBook-Pro.local" time="0.166">
+  <properties/>
+  <testcase name="testGetCommissionSkipWhileLoop" classname="TestCommission" time="0.15">
+    <system-err><![CDATA[Nov. 14, 2023 12:56:53 P.M. CalculateCommission getCommission
+INFO: Total sales: 0.0
+Nov. 14, 2023 12:56:53 P.M. CalculateCommission getCommission
+INFO: Commission is: $0.0
+]]></system-err>
+  </testcase>
+  <testcase name="testGetCommissionEnterWhileLoop" classname="TestCommission" time="0.014">
+    <system-err><![CDATA[Nov. 14, 2023 12:56:53 P.M. CalculateCommission getCommission
+INFO: Total sales: 2500.0
+Nov. 14, 2023 12:56:53 P.M. CalculateCommission getCommission
+INFO: Commission is: $520.0
+]]></system-err>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
